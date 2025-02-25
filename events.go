@@ -21,6 +21,7 @@ type ExtListNotifiedEvent struct {
 }
 
 // AccessEvent is a WebSocket event that occurs when the access state of a mixer changes.
+// This Event is not stable. API may change in the future.
 type AccessEvent struct {
 	Mixer       int
 	AccessGroup int
