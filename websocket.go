@@ -356,8 +356,16 @@ func (ws *WebSocket) nodeValueReceived(pathPrefix string, value any, eventChanne
 
 		// Object? Traverse it.
 		if data, ok := value.(map[string]any); ok {
+			// Use the path as the prefix, with an added slash if non-empty
+			prefix := path
+			if prefix != "" {
+				prefix += "/"
+			}
+
+			// Iterate through all keys in the object
+			// and call traverse() for each key
 			for node, val := range data {
-				traverse(path+"/"+node, val)
+				traverse(prefix+node, val)
 			}
 			return
 		}
